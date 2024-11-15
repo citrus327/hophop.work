@@ -1,18 +1,9 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
 import "./globals.css";
 import Link from "next/link";
-
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
+import clsx from "clsx";
+import { poppins } from "./fonts";
+import { logoFont } from "./fonts";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -26,15 +17,18 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <nav>
+      <body className={`container mx-auto py-12`}>
+        <nav
+          className={clsx(
+            logoFont.className,
+            "text-2xl flex items-start gap-12"
+          )}
+        >
           <Link href="/">Home</Link>
-          <Link href="/about">About</Link>
           <Link href="/blog">Blog</Link>
+          <Link href="/about">About</Link>
         </nav>
-        <main>{children}</main>
+        <main className={clsx(poppins.className, "mt-12")}>{children}</main>
       </body>
     </html>
   );
