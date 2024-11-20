@@ -8,7 +8,7 @@ export default {
   ],
   theme: {
     screens: {
-      laptop: "600px",
+      laptop: "1200px",
     },
     extend: {
       colors: {

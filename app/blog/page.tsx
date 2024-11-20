@@ -1,23 +1,26 @@
-// import Link from "next/link";
-// import { NotionAPI } from "notion-client";
+import Link from "next/link";
 
 export default async function Blog() {
-  // const notion = new NotionAPI();
-  // const COLLECTION_ID = "1edbf480-c18c-4bf2-a9e1-5f552597729c";
-
-  // try {
-  //   const collectionData2 = await notion.getCollectionData(
-  //     COLLECTION_ID,
-  //     "cd627ecf-9b3a-4ed4-a8d3-4a3ff0297353"
-  //     // collectionView
-  //   );
-  //   console.log(collectionData2);
-  // } catch (error) {
-  //   console.log(error);
-  // }
+  const pages = await fetch(`https://workers.hophop.work/blog/pages`).then(
+    (res) => res.json()
+  );
   return (
-    <div className="flex justify-center mt-36">
-      <span className="animate-pulse">The site is under construction...</span>
+    <div className="flex flex-col gap-2">
+      {pages.publishedPages.map((page, index) => (
+        <div
+          key={page.pageId}
+          className="flex items-center gap-2 w-full hover:bg-gray-200 p-2 rounded-md cursor-pointer"
+        >
+          <i>
+            {index + 1}. {"  "}
+          </i>
+          <Link href={`/pages/${page.pageId}`}>{page.title}</Link>
+
+          <b className="ml-auto">
+            {new Date(page.createdTime).toLocaleDateString()}
+          </b>
+        </div>
+      ))}
     </div>
   );
 }
