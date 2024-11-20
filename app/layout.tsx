@@ -4,6 +4,7 @@ import Link from "next/link";
 import clsx from "clsx";
 import { poppins } from "./fonts";
 import { logoFont } from "./fonts";
+import { Analytics } from "@vercel/analytics/react";
 
 export const metadata: Metadata = {
   title: "HopHop | Personal Blog",
@@ -54,6 +55,7 @@ export default function RootLayout({
           <Link href="/about">About</Link>
         </nav>
         <main className={clsx(poppins.className, "mt-12")}>{children}</main>
+        <Analytics />
       </body>
     </html>
   );
