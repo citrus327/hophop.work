@@ -24,7 +24,7 @@ export default async function Blog() {
           </i>
           <Link href={`/pages/${page.pageId}`}>{page.title}</Link>
 
-          <span className="ml-auto">
+          <span className="ml-auto hidden sm:block">
             {Intl.DateTimeFormat().format(new Date(page.createdTime))}
           </span>
         </div>

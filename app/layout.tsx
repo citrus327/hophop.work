@@ -45,17 +45,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="container mx-auto py-8 px-8 sm:px-auto">
+      <body className="container mx-auto p-6">
         <nav
           className={clsx(
             logoFont.className,
-            "text-2xl flex items-start gap-12"
+            "text-2xl flex gap-12",
+            "justify-center"
           )}
         >
-          <Link href="/">Blog</Link>
-          <Link href="/about">About</Link>
+          <Link href="/">{`<Home />`}</Link>
+          <Link href="/about">{`<About />`}</Link>
         </nav>
-        <main className={clsx(poppins.className, "mt-12")}>{children}</main>
+        <main className={clsx(poppins.className, "mt-6 md:mt-8")}>
+          {children}
+        </main>
         <Analytics />
       </body>
     </html>
