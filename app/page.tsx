@@ -1,38 +1,34 @@
-import { Metadata } from "next";
+import Link from "next/link";
+interface Page {
+  pageId: string;
+  createdTime: string;
+  lastEditedTime: string;
+  title: string;
+}
 
-export const metadata: Metadata = {
-  title: "HopHop | Personal Blog",
-  description:
-    "Explore articles about frontend and the web. Find insights, tutorials, and thoughts about the web.",
-  keywords: "blog, personal blog, frontend, web",
-  openGraph: {
-    title: "HopHop | Personal Blog",
-    description:
-      "Explore articles about frontend and the web. Find insights, tutorials, and thoughts about the web.",
-    type: "website",
-    locale: "en_US",
-    url: "https://hophop.work",
-    siteName: "HopHop",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "HopHop | Personal Blog",
-    description:
-      "Explore articles about frontend and the web. Find insights, tutorials, and thoughts about the web.",
-    creator: "@_citrus327", // Your Twitter handle
-  },
-  robots: {
-    index: true,
-    follow: true,
-  },
-  alternates: {
-    canonical: "https://hophop.work",
-  },
-};
-export default function Home() {
+export const revalidate = 60;
+
+export default async function Blog() {
+  const pages = await fetch(`https://workers.hophop.work/blog/pages`).then(
+    (res) => res.json()
+  );
   return (
-    <div className="flex">
-      <span className="animate-pulse">The site is under construction...</span>
+    <div className="flex flex-col gap-2">
+      {pages.publishedPages.map((page: Page, index: number) => (
+        <div
+          key={page.pageId}
+          className="flex items-center gap-2 w-full hover:bg-gray-200 p-2 rounded-md cursor-pointer"
+        >
+          <i>
+            {index + 1}. {"  "}
+          </i>
+          <Link href={`/pages/${page.pageId}`}>{page.title}</Link>
+
+          <span className="ml-auto">
+            {Intl.DateTimeFormat().format(new Date(page.createdTime))}
+          </span>
+        </div>
+      ))}
     </div>
   );
 }

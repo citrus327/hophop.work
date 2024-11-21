@@ -5,9 +5,11 @@ import clsx from "clsx";
 import { poppins } from "./fonts";
 import { logoFont } from "./fonts";
 import { Analytics } from "@vercel/analytics/react";
+import "react-notion-x/src/styles.css";
+import "prismjs/themes/prism.min.css";
 
 export const metadata: Metadata = {
-  title: "HopHop | Personal Blog",
+  title: "HopHop Blog",
   description:
     "Explore articles about frontend and the web. Find insights, tutorials, and thoughts about the web.",
   keywords: "blog, personal blog, frontend, web",
@@ -42,7 +44,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className="container mx-auto py-8 px-8 sm:px-auto">
         <nav
           className={clsx(
@@ -50,8 +52,7 @@ export default function RootLayout({
             "text-2xl flex items-start gap-12"
           )}
         >
-          <Link href="/">Home</Link>
-          <Link href="/blog">Blog</Link>
+          <Link href="/">Blog</Link>
           <Link href="/about">About</Link>
         </nav>
         <main className={clsx(poppins.className, "mt-12")}>{children}</main>
