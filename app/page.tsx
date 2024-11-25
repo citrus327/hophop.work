@@ -10,18 +10,20 @@ export default async function Blog() {
   );
   return (
     <div className="flex flex-col gap-2">
-      {pages.publishedPages.map((page: Page, index: number) => (
+      {pages.publishedPages.map((page: Page) => (
         <div
           key={page.pageId}
           className={cn(
-            "flex items-center gap-2 w-full p-2 rounded-md cursor-pointer",
+            "flex items-center gap-16 w-full p-2 rounded-md cursor-pointer",
             "hover:bg-gray-200 transition-colors duration-100 ease-linear"
           )}
         >
-          <i>
-            {index + 1}. {"  "}
-          </i>
-          <Link href={`/pages/${page.slug}`}>{page.title}</Link>
+          <Link href={`/pages/${page.slug}`} title={`${page.title}`}>
+            <div className="flex items-center gap-2">
+              <div>-</div>
+              <div className="text-gray-700">{page.title}</div>
+            </div>
+          </Link>
 
           <span className="ml-auto hidden sm:block">
             {Intl.DateTimeFormat().format(new Date(page.createdTime))}

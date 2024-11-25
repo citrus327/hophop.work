@@ -3,5 +3,6 @@ export interface Page {
   createdTime: string;
   lastEditedTime: string;
   title: string;
+  description: string;
   slug: string;
 }
