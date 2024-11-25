@@ -4,9 +4,9 @@ import Link from "next/link";
 import clsx from "clsx";
 import { poppins } from "./fonts";
 import { logoFont } from "./fonts";
-import { Analytics } from "@vercel/analytics/react";
 import "react-notion-x/src/styles.css";
 import "prismjs/themes/prism.min.css";
+import Metrics from "./components/metrics";
 
 export const metadata: Metadata = {
   title: "hophop.work",
@@ -56,7 +56,7 @@ export default function RootLayout({
         <main className={clsx(poppins.className, "mt-6 md:mt-8")}>
           {children}
         </main>
-        <Analytics />
+        <Metrics />
       </body>
     </html>
   );
