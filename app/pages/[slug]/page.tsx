@@ -17,6 +17,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const pageInfo = await getPageInfo((await params).slug);
   return {
     title: pageInfo.title,
+    description: pageInfo.description,
   };
 }
 

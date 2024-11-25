@@ -9,24 +9,21 @@ import "react-notion-x/src/styles.css";
 import "prismjs/themes/prism.min.css";
 
 export const metadata: Metadata = {
-  title: "HopHop Blog",
-  description:
-    "Explore articles about frontend and the web. Find insights, tutorials, and thoughts about the web.",
+  title: "hophop.work",
+  description: "The place that I share and create.",
   keywords: "blog, personal blog, frontend, web",
   openGraph: {
-    title: "HopHop | Personal Blog",
-    description:
-      "Explore articles about frontend and the web. Find insights, tutorials, and thoughts about the web.",
+    title: "hophop.work",
+    description: "The place that I share and create.",
     type: "website",
     locale: "en_US",
     url: "https://hophop.work",
-    siteName: "HopHop",
+    siteName: "hophop.work",
   },
   twitter: {
     card: "summary_large_image",
-    title: "HopHop | Personal Blog",
-    description:
-      "Explore articles about frontend and the web. Find insights, tutorials, and thoughts about the web.",
+    title: "hophop.work",
+    description: "The place that I share and create.",
     creator: "@_citrus327", // Your Twitter handle
   },
   robots: {
