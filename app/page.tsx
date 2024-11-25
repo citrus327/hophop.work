@@ -1,11 +1,5 @@
 import Link from "next/link";
-interface Page {
-  pageId: string;
-  createdTime: string;
-  lastEditedTime: string;
-  title: string;
-  slug: string;
-}
+import { Page } from "./types";
 
 export const revalidate = 60;
 

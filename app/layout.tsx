@@ -55,7 +55,6 @@ export default function RootLayout({
         >
           <Link href="/">{`<Home />`}</Link>
           <Link href="/about">{`<About />`}</Link>
-          <Link href="/reading-list">{`<ReadingList />`}</Link>
         </nav>
         <main className={clsx(poppins.className, "mt-6 md:mt-8")}>
           {children}
