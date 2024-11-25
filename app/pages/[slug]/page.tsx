@@ -25,7 +25,6 @@ export const revalidate = 60;
 export default async function Page({ params }: Props) {
   const slug = (await params).slug;
   const pageInfo = await getPageInfo(slug);
-  console.log({ pageInfo });
   if (!pageInfo.pageId) {
     notFound();
   }
