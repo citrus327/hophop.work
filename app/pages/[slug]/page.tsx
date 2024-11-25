@@ -1,5 +1,6 @@
 import { NotionPage } from "@/app/components/notion-page";
 import { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { NotionAPI } from "notion-client";
 
 type Props = {
@@ -23,10 +24,13 @@ export const revalidate = 60;
 
 export default async function Page({ params }: Props) {
   const slug = (await params).slug;
-  const notion = new NotionAPI();
-  const recordMap = await notion.getPage(slug);
-
   const pageInfo = await getPageInfo(slug);
+  console.log({ pageInfo });
+  if (!pageInfo.pageId) {
+    notFound();
+  }
+  const notion = new NotionAPI();
+  const recordMap = await notion.getPage(pageInfo.pageId);
 
   return (
     <div>
