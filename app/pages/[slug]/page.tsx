@@ -18,6 +18,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: pageInfo.title,
     description: pageInfo.description,
+    keywords: "blog, personal blog, frontend, web",
+    openGraph: {
+      title: pageInfo.title,
+      description: pageInfo.description,
+      type: "website",
+      locale: "en_US",
+      url: `https://hophop.work/pages/${pageInfo.slug}`,
+      siteName: "hophop.work",
+    },
   };
 }
 
